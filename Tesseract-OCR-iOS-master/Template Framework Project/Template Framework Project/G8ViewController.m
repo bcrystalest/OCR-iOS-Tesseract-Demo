@@ -180,7 +180,6 @@
 //        [self recognizeImageWithTesseract:image];
 //    };
     [self presentViewController:vc animated:YES completion:nil];
-    
 }
 
 

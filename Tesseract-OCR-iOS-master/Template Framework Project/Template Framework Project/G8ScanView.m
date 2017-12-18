@@ -86,6 +86,7 @@
     
     tipLabel.center = center;
     
+    
     [self addSubview:tipLabel];
 }
 
@@ -103,15 +104,15 @@
     [_timer invalidate];
 }
 
-//- (void)drawRect:(CGRect)rect {
-//    rect = _IDCardScanningWindowLayer.frame;
-//
-//    // 人像提示框
+- (void)drawRect:(CGRect)rect {
+    rect = _IDCardScanningWindowLayer.frame;
+
+    // 人像提示框
 //    UIBezierPath *facePath = [UIBezierPath bezierPathWithRect:_facePathRect];
 //    facePath.lineWidth = 1.5;
 //    [[UIColor whiteColor] set];
 //    [facePath stroke];
-//
+
 //    // 水平扫描线
 //    CGContextRef context = UIGraphicsGetCurrentContext();
 //
@@ -135,9 +136,9 @@
 //
 //    CGContextMoveToPoint(context,p1.x, p1.y);
 //    CGContextAddLineToPoint(context, p2.x, p2.y);
-//
-//    /*
-//     // 竖直扫描线
+
+    
+     // 竖直扫描线
 //     static CGFloat moveY = 0;
 //     static CGFloat distanceY = 0;
 //     CGPoint p3, p4;// p3, p4连成竖直扫描线
@@ -153,10 +154,10 @@
 //
 //     CGContextMoveToPoint(context,p3.x, p3.y);
 //     CGContextAddLineToPoint(context, p4.x, p4.y);
-//     */
-//
+
+
 //    CGContextStrokePath(context);
-//}
+}
 
 // Only override drawRect: if you perform custom drawing.
 // An empty implementation adversely affects performance during animation.

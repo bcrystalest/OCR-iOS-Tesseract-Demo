@@ -12,6 +12,8 @@
 #import <AVFoundation/AVFoundation.h>
 #import "G8VideoScanController.h"
 #import "G8ScanView.h"
+
+
 @interface G8VideoScanController() <AVCaptureVideoDataOutputSampleBufferDelegate,G8TesseractDelegate>
 @property (nonatomic, strong)AVCaptureSession *captureSession;
 @property (nonatomic, strong)UIImageView *imageView;
@@ -28,15 +30,14 @@
 - (void)viewDidLoad{
     [super viewDidLoad];
     self.operationQueue = [[NSOperationQueue alloc] init];
-    self.view.backgroundColor = [UIColor whiteColor];
-    
-    
+    self.view.backgroundColor = [UIColor whiteColor];    
+
     
     //使用self.session，初始化预览层，self.session负责驱动input进行信息的采集，layer负责把图像渲染显示
     AVCaptureDevice *device = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo];
     AVCaptureDeviceInput *captureInput = [AVCaptureDeviceInput deviceInputWithDevice:device  error:nil];
     self.captureOutput = [[AVCaptureVideoDataOutput alloc] init];
-
+    
     //    丢弃最后视频帧
     _captureOutput.alwaysDiscardsLateVideoFrames = YES;
     
@@ -63,15 +64,84 @@
     self.IDCardScaningView  = [[G8ScanView alloc] initWithFrame:self.view.frame];
     [self.view addSubview:self.IDCardScaningView];
     
-    self.imageView = [[UIImageView alloc]initWithFrame:CGRectMake(40, 310,150 , 150)];
-    self.imageView.backgroundColor = [UIColor grayColor];
-    [self.view addSubview:self.imageView];
-    [self.imageView setContentMode:UIViewContentModeScaleAspectFit];
+    //默认打开闪光灯
+    [self openLight];
     
+    UILabel *alertTextLabel = [[UILabel alloc]initWithFrame:CGRectMake(0,kScreenHeight/2 - 60,kScreenWidth , 40)];
+    [self.view addSubview:alertTextLabel];
+    alertTextLabel.text = @"放入框内,自动扫描";
+    alertTextLabel.textAlignment = NSTextAlignmentCenter;
+    alertTextLabel.font = [UIFont systemFontOfSize:13];
+    alertTextLabel.textColor = [UIColor whiteColor];
+    
+//    self.imageView = [[UIImageView alloc]initWithFrame:CGRectMake(40, 310,150 , 150)];
+//    [self.view addSubview:self.imageView];
+//    [self.imageView setContentMode:UIViewContentModeScaleAspectFit];
+    
+    UIButton *leftButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    leftButton.frame = CGRectMake(20, 30, 30, 30);
+    leftButton.titleLabel.textAlignment = NSTextAlignmentCenter;
+    [leftButton addTarget:self action:@selector(cancle) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:leftButton];
+    [leftButton setImage:[UIImage imageNamed:@"back.png"] forState:UIControlStateNormal];
     
 //    UIImage *image= [UIImage imageNamed:@"image_sample.jpg"];
 //    [self recognizeImageWithTesseract:image];
+    
+    UIButton *rightButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    rightButton.frame = CGRectMake(leftButton.frame.origin.x + 40, 30, 30, 30);
+    rightButton.titleLabel.textAlignment = NSTextAlignmentCenter;
+    [rightButton addTarget:self action:@selector(photoCamera:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:rightButton];
+    [rightButton setImage:[UIImage imageNamed:@"flashLight.png"] forState:UIControlStateNormal];
+    rightButton.selected = YES;
+    
+}
 
+- (void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
+    [self closeLight];
+}
+
+#pragma mark - 按钮点击方法
+
+- (void)cancle{
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (void)photoCamera:(UIButton *)sender{
+    sender.selected = !sender.selected;
+    if (sender.isSelected == YES) { //打开闪光灯
+        [self openLight];
+    }else{//关闭闪光灯
+        [self closeLight];
+    }
+    
+}
+
+
+#pragma mark - 相机闪光灯开关
+
+- (void)openLight{
+    AVCaptureDevice *captureDevice = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo];
+    NSError *error = nil;
+    
+    if ([captureDevice hasTorch]) {
+        BOOL locked = [captureDevice lockForConfiguration:&error];
+        if (locked) {
+            captureDevice.torchMode = AVCaptureTorchModeOn;
+            [captureDevice unlockForConfiguration];
+        }
+    }
+}
+
+- (void)closeLight{
+    AVCaptureDevice *device = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo];
+    if ([device hasTorch]) {
+        [device lockForConfiguration:nil];
+        [device setTorchMode: AVCaptureTorchModeOff];
+        [device unlockForConfiguration];
+    }
 }
 
 - (void)captureOutput:(AVCaptureOutput *)captureOutput didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer fromConnection:(AVCaptureConnection *)connection
