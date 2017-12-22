@@ -8,12 +8,26 @@
 //
 
 #import "G8AppDelegate.h"
-
+#import "mainViewController.h"
 @implementation G8AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
+    // 1.创建窗口
+    self.window = [[UIWindow alloc]initWithFrame:[UIScreen mainScreen].bounds];
+    // 2.设置窗口的根控制器
+    mainViewController *vc = [mainViewController new];
+    self.window.rootViewController = vc;
+//    vc.block = ^{
+//        productMainTabBarController *tabBarVC = [[productMainTabBarController alloc]init];
+//        weakSelf.window.rootViewController = tabBarVC;
+//    };
+    
+    // 3.显示窗口
+    [self.window makeKeyAndVisible];
+    NSLog(@"");
+    
     return YES;
 }
 							

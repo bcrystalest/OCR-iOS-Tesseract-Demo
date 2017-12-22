@@ -8,6 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		428615B71845F340005D5A2E /* image_sample.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 428615B61845F340005D5A2E /* image_sample.jpg */; };
+		4F2101851FE8B3B800D22429 /* LICENSE.txt in Resources */ = {isa = PBXBuildFile; fileRef = 4F2101791FE8B3B800D22429 /* LICENSE.txt */; };
+		4F2101861FE8B3B800D22429 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 4F21017A1FE8B3B800D22429 /* README.md */; };
+		4F2101871FE8B3B800D22429 /* SVIndefiniteAnimatedView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F21017D1FE8B3B800D22429 /* SVIndefiniteAnimatedView.m */; };
+		4F2101881FE8B3B800D22429 /* SVProgressAnimatedView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F21017F1FE8B3B800D22429 /* SVProgressAnimatedView.m */; };
+		4F2101891FE8B3B800D22429 /* SVProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 4F2101801FE8B3B800D22429 /* SVProgressHUD.bundle */; };
+		4F21018A1FE8B3B800D22429 /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F2101821FE8B3B800D22429 /* SVProgressHUD.m */; };
+		4F21018B1FE8B3B800D22429 /* SVRadialGradientLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F2101841FE8B3B800D22429 /* SVRadialGradientLayer.m */; };
 		4F710EB21FC27715008B0D1E /* G8PhotoScanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F710EB11FC27715008B0D1E /* G8PhotoScanViewController.m */; };
 		4F710EB51FC27750008B0D1E /* G8ScanView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F710EB41FC27750008B0D1E /* G8ScanView.m */; };
 		4F710EC31FC29D80008B0D1E /* photograph_Select@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F710EBF1FC29D7F008B0D1E /* photograph_Select@3x.png */; };
@@ -17,6 +24,9 @@
 		4F82D5001FE2441C00A8CCA2 /* G8VideoScanController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F82D4FF1FE2441C00A8CCA2 /* G8VideoScanController.m */; };
 		4F82D5021FE24CF900A8CCA2 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F82D5011FE24CF900A8CCA2 /* AVFoundation.framework */; };
 		4F82D5041FE24DE400A8CCA2 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F82D5031FE24DE400A8CCA2 /* MediaPlayer.framework */; };
+		4FAA8BB11FE7D6E80020FB29 /* mainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FAA8BB01FE7D6E80020FB29 /* mainViewController.m */; };
+		4FAA8BB61FE7D7170020FB29 /* subVC1.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FAA8BB51FE7D7170020FB29 /* subVC1.m */; };
+		4FAA8BB91FE7D7FE0020FB29 /* subVC2.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FAA8BB81FE7D7FE0020FB29 /* subVC2.m */; };
 		6400DDD9180C5DE000443362 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6400DDD8180C5DE000443362 /* Foundation.framework */; };
 		6400DDDB180C5DE000443362 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6400DDDA180C5DE000443362 /* CoreGraphics.framework */; };
 		6400DDDD180C5DE000443362 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6400DDDC180C5DE000443362 /* UIKit.framework */; };
@@ -34,6 +44,17 @@
 
 /* Begin PBXFileReference section */
 		428615B61845F340005D5A2E /* image_sample.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = image_sample.jpg; sourceTree = "<group>"; };
+		4F2101791FE8B3B800D22429 /* LICENSE.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE.txt; sourceTree = "<group>"; };
+		4F21017A1FE8B3B800D22429 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		4F21017C1FE8B3B800D22429 /* SVIndefiniteAnimatedView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVIndefiniteAnimatedView.h; sourceTree = "<group>"; };
+		4F21017D1FE8B3B800D22429 /* SVIndefiniteAnimatedView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVIndefiniteAnimatedView.m; sourceTree = "<group>"; };
+		4F21017E1FE8B3B800D22429 /* SVProgressAnimatedView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVProgressAnimatedView.h; sourceTree = "<group>"; };
+		4F21017F1FE8B3B800D22429 /* SVProgressAnimatedView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVProgressAnimatedView.m; sourceTree = "<group>"; };
+		4F2101801FE8B3B800D22429 /* SVProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SVProgressHUD.bundle; sourceTree = "<group>"; };
+		4F2101811FE8B3B800D22429 /* SVProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVProgressHUD.h; sourceTree = "<group>"; };
+		4F2101821FE8B3B800D22429 /* SVProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVProgressHUD.m; sourceTree = "<group>"; };
+		4F2101831FE8B3B800D22429 /* SVRadialGradientLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVRadialGradientLayer.h; sourceTree = "<group>"; };
+		4F2101841FE8B3B800D22429 /* SVRadialGradientLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVRadialGradientLayer.m; sourceTree = "<group>"; };
 		4F710EB01FC27715008B0D1E /* G8PhotoScanViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = G8PhotoScanViewController.h; sourceTree = "<group>"; };
 		4F710EB11FC27715008B0D1E /* G8PhotoScanViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = G8PhotoScanViewController.m; sourceTree = "<group>"; };
 		4F710EB31FC27750008B0D1E /* G8ScanView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = G8ScanView.h; sourceTree = "<group>"; };
@@ -46,6 +67,12 @@
 		4F82D4FF1FE2441C00A8CCA2 /* G8VideoScanController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = G8VideoScanController.m; sourceTree = "<group>"; };
 		4F82D5011FE24CF900A8CCA2 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		4F82D5031FE24DE400A8CCA2 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
+		4FAA8BAF1FE7D6E80020FB29 /* mainViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = mainViewController.h; sourceTree = "<group>"; };
+		4FAA8BB01FE7D6E80020FB29 /* mainViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = mainViewController.m; sourceTree = "<group>"; };
+		4FAA8BB41FE7D7170020FB29 /* subVC1.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = subVC1.h; sourceTree = "<group>"; };
+		4FAA8BB51FE7D7170020FB29 /* subVC1.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = subVC1.m; sourceTree = "<group>"; };
+		4FAA8BB71FE7D7FE0020FB29 /* subVC2.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = subVC2.h; sourceTree = "<group>"; };
+		4FAA8BB81FE7D7FE0020FB29 /* subVC2.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = subVC2.m; sourceTree = "<group>"; };
 		6400DDD5180C5DE000443362 /* Template Framework Project.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Template Framework Project.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6400DDD8180C5DE000443362 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		6400DDDA180C5DE000443362 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -86,6 +113,54 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4F2101781FE8B3B800D22429 /* SVProgressHUD */ = {
+			isa = PBXGroup;
+			children = (
+				4F2101791FE8B3B800D22429 /* LICENSE.txt */,
+				4F21017A1FE8B3B800D22429 /* README.md */,
+				4F21017B1FE8B3B800D22429 /* SVProgressHUD */,
+			);
+			name = SVProgressHUD;
+			path = ../../Pods/SVProgressHUD;
+			sourceTree = "<group>";
+		};
+		4F21017B1FE8B3B800D22429 /* SVProgressHUD */ = {
+			isa = PBXGroup;
+			children = (
+				4F21017C1FE8B3B800D22429 /* SVIndefiniteAnimatedView.h */,
+				4F21017D1FE8B3B800D22429 /* SVIndefiniteAnimatedView.m */,
+				4F21017E1FE8B3B800D22429 /* SVProgressAnimatedView.h */,
+				4F21017F1FE8B3B800D22429 /* SVProgressAnimatedView.m */,
+				4F2101801FE8B3B800D22429 /* SVProgressHUD.bundle */,
+				4F2101811FE8B3B800D22429 /* SVProgressHUD.h */,
+				4F2101821FE8B3B800D22429 /* SVProgressHUD.m */,
+				4F2101831FE8B3B800D22429 /* SVRadialGradientLayer.h */,
+				4F2101841FE8B3B800D22429 /* SVRadialGradientLayer.m */,
+			);
+			path = SVProgressHUD;
+			sourceTree = "<group>";
+		};
+		4FAA8BB21FE7D6EC0020FB29 /* motherVC */ = {
+			isa = PBXGroup;
+			children = (
+				4FAA8BB31FE7D6FF0020FB29 /* subVC */,
+				4FAA8BAF1FE7D6E80020FB29 /* mainViewController.h */,
+				4FAA8BB01FE7D6E80020FB29 /* mainViewController.m */,
+			);
+			name = motherVC;
+			sourceTree = "<group>";
+		};
+		4FAA8BB31FE7D6FF0020FB29 /* subVC */ = {
+			isa = PBXGroup;
+			children = (
+				4FAA8BB41FE7D7170020FB29 /* subVC1.h */,
+				4FAA8BB51FE7D7170020FB29 /* subVC1.m */,
+				4FAA8BB71FE7D7FE0020FB29 /* subVC2.h */,
+				4FAA8BB81FE7D7FE0020FB29 /* subVC2.m */,
+			);
+			name = subVC;
+			sourceTree = "<group>";
+		};
 		6400DDCC180C5DE000443362 = {
 			isa = PBXGroup;
 			children = (
@@ -125,6 +200,7 @@
 				64DDA75A188FD9140025590D /* tessdata */,
 				6400DDE7180C5DE000443362 /* G8AppDelegate.h */,
 				6400DDE8180C5DE000443362 /* G8AppDelegate.m */,
+				4FAA8BB21FE7D6EC0020FB29 /* motherVC */,
 				4F710EC11FC29D80008B0D1E /* photograph_Select@2x.png */,
 				4F710EBF1FC29D7F008B0D1E /* photograph_Select@3x.png */,
 				4F710EC21FC29D80008B0D1E /* photograph@2x.png */,
@@ -147,6 +223,7 @@
 		6400DDDF180C5DE000443362 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				4F2101781FE8B3B800D22429 /* SVProgressHUD */,
 				428615B61845F340005D5A2E /* image_sample.jpg */,
 				6400DDE0180C5DE000443362 /* Template Framework Project-Info.plist */,
 				6400DDE1180C5DE000443362 /* InfoPlist.strings */,
@@ -187,7 +264,7 @@
 				ORGANIZATIONNAME = "Daniele Galiotto - www.g8production.com";
 				TargetAttributes = {
 					6400DDD4180C5DE000443362 = {
-						DevelopmentTeam = R8VJNURW6K;
+						DevelopmentTeam = J995UNL2CV;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -222,7 +299,10 @@
 				4F710EC41FC29D80008B0D1E /* photograph@3x.png in Resources */,
 				64DDA75B188FD9140025590D /* tessdata in Resources */,
 				4F710EC31FC29D80008B0D1E /* photograph_Select@3x.png in Resources */,
+				4F2101891FE8B3B800D22429 /* SVProgressHUD.bundle in Resources */,
 				6400DDE3180C5DE000443362 /* InfoPlist.strings in Resources */,
+				4F2101851FE8B3B800D22429 /* LICENSE.txt in Resources */,
+				4F2101861FE8B3B800D22429 /* README.md in Resources */,
 				64DDA74E188FD7D10025590D /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -234,12 +314,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4FAA8BB91FE7D7FE0020FB29 /* subVC2.m in Sources */,
 				6400DDE5180C5DE000443362 /* main.m in Sources */,
+				4F2101881FE8B3B800D22429 /* SVProgressAnimatedView.m in Sources */,
 				6400DDE9180C5DE000443362 /* G8AppDelegate.m in Sources */,
 				6400DDEF180C5DE000443362 /* G8ViewController.m in Sources */,
+				4F21018A1FE8B3B800D22429 /* SVProgressHUD.m in Sources */,
 				4F82D5001FE2441C00A8CCA2 /* G8VideoScanController.m in Sources */,
+				4F2101871FE8B3B800D22429 /* SVIndefiniteAnimatedView.m in Sources */,
 				4F710EB21FC27715008B0D1E /* G8PhotoScanViewController.m in Sources */,
+				4F21018B1FE8B3B800D22429 /* SVRadialGradientLayer.m in Sources */,
+				4FAA8BB11FE7D6E80020FB29 /* mainViewController.m in Sources */,
 				4F710EB51FC27750008B0D1E /* G8ScanView.m in Sources */,
+				4FAA8BB61FE7D7170020FB29 /* subVC1.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -349,7 +436,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = R8VJNURW6K;
+				DEVELOPMENT_TEAM = J995UNL2CV;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_TEMP_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)",
@@ -370,7 +457,7 @@
 					"-ObjC",
 					"-lz",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "-34112686-163.com.FAFC-Demo111111";
+				PRODUCT_BUNDLE_IDENTIFIER = "-34112686-163.com.FAFC-TESSERACT-Demo";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				WRAPPER_EXTENSION = app;
@@ -384,7 +471,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = R8VJNURW6K;
+				DEVELOPMENT_TEAM = J995UNL2CV;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_TEMP_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)",
@@ -405,7 +492,7 @@
 					"-ObjC",
 					"-lz",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "-34112686-163.com.FAFC-Demo111111";
+				PRODUCT_BUNDLE_IDENTIFIER = "-34112686-163.com.FAFC-TESSERACT-Demo";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				WRAPPER_EXTENSION = app;

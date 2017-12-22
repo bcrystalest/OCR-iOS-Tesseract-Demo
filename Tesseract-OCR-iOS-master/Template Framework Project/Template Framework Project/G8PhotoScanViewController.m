@@ -652,30 +652,35 @@
         recognizedText = [recognizedText stringByReplacingOccurrencesOfString:@" " withString:@""];
         recognizedText = [recognizedText stringByReplacingOccurrencesOfString:@"\n" withString:@""];
         NSString *newString = [NSString stringWithFormat:@"%@",recognizedText];
-        NSString *regex = @"^[0-9]+$";
-        NSPredicate *pred = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", regex];
-        BOOL isMatch  = [pred evaluateWithObject:newString];
-        if (isMatch) {
-//        if ([newString containsString:@":"]) {
-            [self cleanAllQueue];
-            // Spawn an alert with the recognized text
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"OCR Result"
-                                                            message:recognizedText
-                                                           delegate:self
-                                                  cancelButtonTitle:@"OK"
-                                                  otherButtonTitles:nil];
-            alert.tag = 101;
-            [alert show];
+        NSArray *array = [newString componentsSeparatedByString:@":"];
+        if (array.count > 0) {
+            NSString *newString1 = array[1];
+            if (newString1.length == 8) {
+                NSString *regex = @"^[0-9]+$";
+                NSPredicate *pred = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", regex];
+                BOOL isMatch  = [pred evaluateWithObject:newString1];
+                if (isMatch) {
+                    //        if ([newString containsString:@":"]) {
+                    [self cleanAllQueue];
+                    // Spawn an alert with the recognized text
+                    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"OCR Result"
+                                                                    message:recognizedText
+                                                                   delegate:self
+                                                          cancelButtonTitle:@"OK"
+                                                          otherButtonTitles:nil];
+                    alert.tag = 101;
+                    [alert show];
+                }else{
+                    [self takeTimerStart];
+                }
+            }else{
+                [self takeTimerStart];
+            }
         }else{
             [self takeTimerStart];
         }
-
-//            NSString * regex = @"(/^[0-9]*$/)";
-//            NSPredicate * pred = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", regex];
-//            BOOL isMatch  = [pred evaluateWithObject:recognizedText];
-//            if (isMatch) {
         
-//            }
+
     
     };
     

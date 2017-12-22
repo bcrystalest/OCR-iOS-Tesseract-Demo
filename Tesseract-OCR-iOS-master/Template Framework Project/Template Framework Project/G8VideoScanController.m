@@ -13,7 +13,6 @@
 #import "G8VideoScanController.h"
 #import "G8ScanView.h"
 
-
 @interface G8VideoScanController() <AVCaptureVideoDataOutputSampleBufferDelegate,G8TesseractDelegate>
 @property (nonatomic, strong)AVCaptureSession *captureSession;
 @property (nonatomic, strong)UIImageView *imageView;
@@ -65,7 +64,7 @@
     [self.view addSubview:self.IDCardScaningView];
     
     //默认打开闪光灯
-    [self openLight];
+//    [self openLight];
     
     UILabel *alertTextLabel = [[UILabel alloc]initWithFrame:CGRectMake(0,kScreenHeight/2 - 60,kScreenWidth , 40)];
     [self.view addSubview:alertTextLabel];
@@ -79,7 +78,7 @@
 //    [self.imageView setContentMode:UIViewContentModeScaleAspectFit];
     
     UIButton *leftButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    leftButton.frame = CGRectMake(20, 30, 30, 30);
+    leftButton.frame = CGRectMake(20, 30, 40, 40);
     leftButton.titleLabel.textAlignment = NSTextAlignmentCenter;
     [leftButton addTarget:self action:@selector(cancle) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:leftButton];
@@ -89,7 +88,7 @@
 //    [self recognizeImageWithTesseract:image];
     
     UIButton *rightButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    rightButton.frame = CGRectMake(leftButton.frame.origin.x + 40, 30, 30, 30);
+    rightButton.frame = CGRectMake(leftButton.frame.origin.x + 50, 30, 40, 40);
     rightButton.titleLabel.textAlignment = NSTextAlignmentCenter;
     [rightButton addTarget:self action:@selector(photoCamera:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:rightButton];
@@ -282,8 +281,10 @@
     // project AND that the "tessdata" folder is a referenced folder and NOT
     // a symbolic group in your project
     [_captureOutput setSampleBufferDelegate:nil queue:_cameraQueue];
-    G8RecognitionOperation *operation = [[G8RecognitionOperation alloc] initWithLanguage:@"eng"];
     
+    G8RecognitionOperation *operation = [[G8RecognitionOperation alloc] initWithLanguage:@"eng"];
+    [self cleanOneQueue:operation];
+
     // Use the original Tesseract engine mode in performing the recognition
     // (see G8Constants.h) for other engine mode options
     operation.tesseract.engineMode = G8OCREngineModeTesseractOnly;
@@ -322,46 +323,72 @@
         
         NSLog(@"%@", recognizedText);
         
-        // Remove the animated progress activity indicator
-        //        [self.activityIndicator stopAnimating];
-        recognizedText = [recognizedText stringByReplacingOccurrencesOfString:@" " withString:@""];
-        recognizedText = [recognizedText stringByReplacingOccurrencesOfString:@"\n" withString:@""];
-        NSString *newString = [NSString stringWithFormat:@"%@",recognizedText];
-        NSString *regex = @"^[0-9]+$";
-        NSPredicate *pred = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", regex];
-        BOOL isMatch  = [pred evaluateWithObject:newString];
-        if (isMatch) {
-            //        if ([newString containsString:@":"]) {
-            // Spawn an alert with the recognized text
-            
-            
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"OCR Result"
-                                                            message:recognizedText
-                                                           delegate:self
-                                                  cancelButtonTitle:@"OK"
-                                                  otherButtonTitles:nil];
-            alert.tag = 101;
-            [alert show];
-        }else{
-             [_captureOutput setSampleBufferDelegate:self queue:_cameraQueue];
+        
+        NSRegularExpression *regular = [NSRegularExpression regularExpressionWithPattern:@"[a-zA-Z.-]" options:0 error:NULL];
+        NSString *newString1 = [regular stringByReplacingMatchesInString:recognizedText options:0 range:NSMakeRange(0, [recognizedText length]) withTemplate:@" "];
+        
+        NSArray *array1 = [newString1 componentsSeparatedByString:@" "];
+        NSString *resultStr;
+        for (NSInteger i = 0; i< array1.count; i++) {
+            NSString *new1str = array1[i];
+            if (new1str.length >= 8) {
+//                [string substringToIndex:7];
+                resultStr = [new1str substringToIndex:8];
+                break;
+            }
         }
+        
+        if (resultStr) {
+            if (newString1.length >= 8) {
+                NSString *regex = @"^[0-9]+$";
+                NSPredicate *pred = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", regex];
+                BOOL isMatch  = [pred evaluateWithObject:resultStr];
+                if (isMatch) {
+                    
+                    //        if ([newString containsString:@":"]) {
+                    // Spawn an alert with the recognized text
+                    
+                    
+                    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"OCR Result"
+                                                                    message:resultStr
+                                                                   delegate:self
+                                                          cancelButtonTitle:@"OK"
+                                                          otherButtonTitles:nil];
+                    alert.tag = 101;
+                    [alert show];
+                }else{
+                     [self afterScanResult];
+                }
+            }else{
+                 [self afterScanResult];
+            }
+        }else{
+             [self afterScanResult];
+        }
+        
     };
     
     // Display the image to be recognized in the view
 
     // Finally, add the recognition operation to the queue
     [self.operationQueue addOperation:operation];
-    [self cleanOneQueue:operation];
     
 }
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
     
     if (alertView.tag == 101) {
-        [self cleanAllQueue];
-        [_captureOutput setSampleBufferDelegate:self queue:_cameraQueue];
+        [self afterScanResult];
     }
     
+}
+
+- (void)afterScanResult{
+    dispatch_time_t delayTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0/*延迟执行时间*/ * NSEC_PER_SEC));
+    dispatch_after(delayTime, dispatch_get_main_queue(), ^{
+        [self cleanAllQueue];
+        [_captureOutput setSampleBufferDelegate:self queue:_cameraQueue];
+    });
 }
 
 
@@ -491,6 +518,9 @@
 }
 
 - (void)cleanOneQueue:(NSOperation *)operation{
+    if (self.operationQueue.operations.count > 1) {
+        
+    }
     for (G8RecognitionOperation *newOperation in self.operationQueue.operations) {
         if (operation != newOperation) {
             [operation cancel];
